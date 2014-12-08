@@ -1,8 +1,18 @@
 
-<% @titles.each do |title| %>
-  <p><%= title %></p>
-<% end %>
+<h2>Weather in <%= @location.upcase %></h2>
 
-<% @infos.each do |info| %>
-  <p><%= info %></p>
-<% end %>
+<div id="data_container">
+  <div id="titles">
+    <% @titles.each do |title| %>
+      <p><%= title %></p>
+    <% end %>
+  </div>
+
+  <div id="infos">
+    <% @infos.each do |info| %>
+      <p><%= info %></p>
+    <% end %>
+  </div>
+</div>
+
+<a href="/"><div id="return_button"></div></a>
