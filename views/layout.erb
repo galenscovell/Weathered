@@ -1,0 +1,25 @@
+
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf8">
+    <title>Weathered</title>
+    <link href="<%= url("/css/main.css")%>" rel="stylesheet">
+  </head>
+
+  <body>
+    <div id="main_container">
+      <div id="sub_container">
+        <div id="info_container">
+          <div id="title_box">
+            <h3>WEATHERED</h3>
+          </div>
+          <div id="content_box">
+            <%= yield %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+
+</html>

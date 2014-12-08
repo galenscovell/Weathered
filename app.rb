@@ -16,7 +16,13 @@ helpers do
 end
 
 get '/' do
-  jhash = JSON.parse(open("http://api.openweathermap.org/data/2.5/weather?q=eugene,or").read)
+  erb :form
+end
+
+post '/enter' do
+  @location = params[:location]
+  site_url = "http://api.openweathermap.org/data/2.5/weather?q=" + @location
+  jhash = JSON.parse(open(site_url).read)
   @titles = []
   @infos = []
 
