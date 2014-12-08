@@ -13,11 +13,25 @@
         <div id="info_container">
           <div id="title_box">
             <h3>WEATHERED</h3>
+
+            <!-- Flash Messages -->
+            <div id="flash_box">
+              <% if flash[:notice] %>
+                <p id="notice"><%=h flash[:notice] %></p>
+              <% elsif flash[:error] %>
+                <p id="error"><%=h flash[:error] %></p>
+              <% else %>
+                <p><br></p>
+              <% end %>
+            </div>
+
           </div>
           <div id="content_box">
+
             <%= yield %>
+
           </div>
-        </div>
+        </div> 
       </div>
     </div>
   </body>

@@ -1,18 +1,25 @@
 
-<h2>Weather in <%= @location.upcase %></h2>
+<h2>Current weather in <%=h @location.capitalize %></h2>
+<h5>Country: <%= @country %></h5>
+<h4>[ <%= @coords %> ]</h5>
 
 <div id="data_container">
-  <div id="titles">
-    <% @titles.each do |title| %>
-      <p><%= title %></p>
+  <div id="left_side">
+    <% @description.each do |w| %>
+      <p><%= w.capitalize %></p>
     <% end %>
   </div>
 
-  <div id="infos">
-    <% @infos.each do |info| %>
-      <p><%= info %></p>
-    <% end %>
+  <div id="right_side">
+    <p><%= @celsius %> &deg;C</p>
+    <p><%= @fahr %> &deg;F</p>
+    <p>Humidity: <%= @humidity %> %</p>
+    <p>Pressure: <%= @pressure %> hpa</p>
+    <p>Wind Speed: <%= @wind %> m/s</p>
+    <p>Wind Direction: <%= @wind_direction %>&deg;</p>
   </div>
 </div>
 
-<a href="/"><div id="return_button"></div></a>
+<a id="return_link" href="/">
+  <div id="return_button">Switch Location</div>
+</a>
