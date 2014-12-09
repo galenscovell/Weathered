@@ -1,22 +1,36 @@
 
-<h2>Current weather in <%=h @location.capitalize %></h2>
-<h5>Country: <%= @country %></h5>
+
+<h2><%=h @location.capitalize %> &#8226; <%= @time %></h2>
+<h5><%= @country %></h5>
 <h4>[ <%= @coords %> ]</h5>
 
 <div id="data_container">
   <div id="left_side">
-    <% @description.each do |w| %>
-      <p><%= w.capitalize %></p>
-    <% end %>
+  <% if @temp < 256 %>
+    <p>Just stay indoors.</p>
+  <% elsif @temp < 275 && @temp > 256  %>
+    <p>It's quite chilly.</p>
+  <% elsif @temp < 285 && @temp > 275 %>
+    <p>It's a bit brisk.</p>
+  <% elsif @temp > 285 %>
+    <p>The temperature is pleasant.</p>
+  <% end %>
+
+  <img src="/css/pics/desc/cloudy.png" />
+
   </div>
 
   <div id="right_side">
-    <p><%= @celsius %> &deg;C</p>
-    <p><%= @fahr %> &deg;F</p>
-    <p>Humidity: <%= @humidity %> %</p>
-    <p>Pressure: <%= @pressure %> hpa</p>
-    <p>Wind Speed: <%= @wind %> m/s</p>
-    <p>Wind Direction: <%= @wind_direction %>&deg;</p>
+    <p><img src="/css/pics/temp.png" /><%= @celsius %> &deg;C | <%= @fahr %> &deg;F</p>
+    <p><img src="/css/pics/humidity.gif" /><%= @humidity %> %</p>
+    <p><img src="/css/pics/pressure.gif" /><%= @pressure %> hPa [<%= @pressure_percent %>% standard]</p>
+    <p><img src="/css/pics/wind.gif" /><%= @wind %> m/s &#8226; <%= @wind_direction %>&deg;</p>
+
+    <% @desc_list = "" %>
+    <% @description.each do |w| %>
+      <% @desc_list += "#{w} | " %>
+    <% end %>
+    <p style="color: #4183D7;"><%= @desc_list %></p>
   </div>
 </div>
 

@@ -25,6 +25,7 @@ post '/enter' do
 
   if jhash['cod'] != '404'
     @name = jhash['name'].capitalize
+    @time = Time.now.strftime('%l:%M %p')
     @country = jhash['sys']['country']
     @coords = jhash['coord']['lon'].to_s + ", " + jhash['coord']['lat'].to_s
 
@@ -38,8 +39,9 @@ post '/enter' do
     @fahr = ((@celsius * 1.8) + 32).round(2)
     @humidity = jhash['main']['humidity']
     @pressure = jhash['main']['pressure']
+    @pressure_percent = ((@pressure / 1013.25) * 100).round(1)
     @wind = jhash['wind']['speed']
-    @wind_direction = jhash['wind']['deg']
+    @wind_direction = (jhash['wind']['deg']).to_i
   else
     redirect '/', flash[:error] = "Location not found."
   end
