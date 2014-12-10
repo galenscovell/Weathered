@@ -1,37 +1,44 @@
 
 
-<h2><%=h @location.capitalize %> &#8226; <%= @time %></h2>
+<h2><%=h @location.capitalize %> &#8226; <%= @time.strftime('%l:%M %p') %></h2>
 <h5><%= @country %></h5>
 <h4>[ <%= @coords %> ]</h5>
 
 <div id="data_container">
 
-  <div id="left_side">
-  <% if @description[0].split(" ").include?("rain") || @description[0].split(" ").include?("drizzle") %>
-    <img src="/css/pics/desc/rain.png" />
-  <% elsif @description[0].split(" ").include?("mist") %>
-    <img src="/css/pics/desc/mist.png" />
-  <% elsif @description[0].split(" ").include?("hail") %>
-    <img src="/css/pics/desc/hail.png" />
-  <% elsif @description[0].split(" ").include?("snow || sleet") %>
-    <img src="/css/pics/desc/snow.png" />
-  <% elsif @description[0].split(" ").include?("thunderstorm") %>
-    <img src="/css/pics/desc/thunder.png" />
-  <% elsif @description[0].split(" ").include?("clouds") %>
-    <img src="/css/pics/desc/cloud.png" />
-  <% elsif @description[0].split(" ").include?("fog") %>
-    <img src="/css/pics/desc/fog.png" />
-  <% elsif @description[0].split(" ").include?("windy") %>
-    <img src="/css/pics/desc/wind.png" />
-  <% else %>
-    <img src="/css/pics/desc/clear.png" />
-  <% end %>
+  <div id="side_bar">
+    <a href="/main"><div class="bars"><%= @time.strftime('%A') %></div></a>
+    <a href="/forecast/0"><div class="bars"><%= (@time + 86400).strftime('%A') %></div></a>
+    <a href="/forecast/1"><div class="bars"><%= (@time + 172800).strftime('%A') %></div></a>
+    <a href="/forecast/2"><div class="bars"><%= (@time + 259200).strftime('%A') %></div></a>
+  </div>
 
-  <% @desc_list = "" %>
-  <% @description.each do |w| %>
-    <% @desc_list += "#{w} &#8226; " %>
-  <% end %>
-  <p><%= @desc_list %></p>
+  <div id="left_side">
+    <% if @description[0].split(" ").include?("rain") || @description[0].split(" ").include?("drizzle") %>
+      <img src="/css/pics/desc/rain.png" />
+    <% elsif @description[0].split(" ").include?("mist") %>
+      <img src="/css/pics/desc/mist.png" />
+    <% elsif @description[0].split(" ").include?("hail") %>
+      <img src="/css/pics/desc/hail.png" />
+    <% elsif @description[0].split(" ").include?("snow") %>
+      <img src="/css/pics/desc/snow.png" />
+    <% elsif @description[0].split(" ").include?("thunderstorm") %>
+      <img src="/css/pics/desc/thunder.png" />
+    <% elsif @description[0].split(" ").include?("clouds") %>
+      <img src="/css/pics/desc/cloud.png" />
+    <% elsif @description[0].split(" ").include?("fog") %>
+      <img src="/css/pics/desc/fog.png" />
+    <% elsif @description[0].split(" ").include?("windy") %>
+      <img src="/css/pics/desc/wind.png" />
+    <% else %>
+      <img src="/css/pics/desc/clear.png" />
+    <% end %>
+
+    <% @desc_list = "" %>
+    <% @description.each do |w| %>
+      <% @desc_list += "#{w} &#8226; " %>
+    <% end %>
+    <p><%= @desc_list %></p>
 
   </div>
 
@@ -93,7 +100,7 @@
     <% when 24.5...30 %>
       <p class="detail">Storm</p>
     <% end %>
-    
+      
   </div>
 
 </div>

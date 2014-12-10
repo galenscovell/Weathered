@@ -1,0 +1,110 @@
+
+
+<h2><%=h session[:location].capitalize %> &#8226; <%= @time.strftime('%l:%M %p') %></h2>
+<h5><%= session[:country] %></h5>
+<h4>[ <%= session[:coords] %> ]</h5>
+
+<div id="data_container">
+
+  <div id="side_bar">
+    <a href="/main"><div class="bars"><%= @time.strftime('%A') %></div></a>
+    <a href="/forecast/0"><div class="bars"><%= (@time + 86400).strftime('%A') %></div></a>
+    <a href="/forecast/1"><div class="bars"><%= (@time + 172800).strftime('%A') %></div></a>
+    <a href="/forecast/2"><div class="bars"><%= (@time + 259200).strftime('%A') %></div></a>
+  </div>
+
+  <div id="left_side">
+    <% if @description[0].split(" ").include?("rain") || @description[0].split(" ").include?("drizzle") %>
+      <img src="/css/pics/desc/rain.png" />
+    <% elsif @description[0].split(" ").include?("mist") %>
+      <img src="/css/pics/desc/mist.png" />
+    <% elsif @description[0].split(" ").include?("hail") %>
+      <img src="/css/pics/desc/hail.png" />
+    <% elsif @description[0].split(" ").include?("snow") %>
+      <img src="/css/pics/desc/snow.png" />
+    <% elsif @description[0].split(" ").include?("thunderstorm") %>
+      <img src="/css/pics/desc/thunder.png" />
+    <% elsif @description[0].split(" ").include?("clouds") %>
+      <img src="/css/pics/desc/cloud.png" />
+    <% elsif @description[0].split(" ").include?("fog") %>
+      <img src="/css/pics/desc/fog.png" />
+    <% elsif @description[0].split(" ").include?("windy") %>
+      <img src="/css/pics/desc/wind.png" />
+    <% else %>
+      <img src="/css/pics/desc/clear.png" />
+    <% end %>
+
+    <% @desc_list = "" %>
+    <% @description.each do |w| %>
+      <% @desc_list += "#{w} &#8226; " %>
+    <% end %>
+    <p><%= @desc_list %></p>
+
+  </div>
+
+  <div id="right_side">
+
+    <p class="main_detail"><img src="/css/pics/temp.png" /><%= @celsius %> &deg;C | <%= @fahr %> &deg;F</p>
+    <% if @temp < 256 %>
+      <p class="detail">Downright cold</p>
+    <% elsif @temp > 256 && @temp < 275  %>
+      <p class="detail">Quite chilly</p>
+    <% elsif @temp > 275 && @temp < 285 %>
+      <p class="detail">A bit brisk</p>
+    <% elsif @temp > 285 && @temp < 295 %>
+      <p class="detail">Pleasant</p>
+    <% elsif @temp > 295 && @temp < 308 %>
+      <p class="detail">Pretty warm</p>
+    <% elsif @temp > 308 %>
+      <p class="detail">Very hot/p>
+    <% end %>
+
+
+    <p class="main_detail"><img src="/css/pics/humidity.gif" /><%= @humidity %> %</p>
+    <% if @temp < 300 || @humidity < 40 %>
+      <p class="detail">Heat Index: No danger</p>
+    <% elsif @temp > 300 && @humidity > 60 %>
+      <p class="detail">Heat Index: Caution</p>
+    <% elsif @temp > 305 && @humidity > 80 %>
+      <p class="detail">Heat Index: Danger</p>
+    <% elsif @temp > 305 && @humidity > 90 %>
+      <p class="detail">Heat Index: Extreme Danger</p>
+    <% end %>
+
+    <p class="main_detail"><img src="/css/pics/pressure.gif" /><%= @pressure %> hPa</p>
+    <p class="detail"><%= @pressure_percent %>% standard</p>
+
+
+    <p class="main_detail"><img src="/css/pics/wind.gif" /><%= @wind %> m/s &#8226; <%= @wind_direction %>&deg;</p>
+    <% case @wind
+      when 0..0.3 %>
+      <p class="detail">Calm</p>
+    <% when 0.3...1.5 %>
+      <p class="detail">Light air</p>
+    <% when 1.6...3.3 %>
+      <p class="detail">Light breeze</p>
+    <% when 3.4...5.4 %>
+      <p class="detail">Gentle breeze</p>
+    <% when 5.5...7.9 %>
+      <p class="detail">Moderate breeze</p>
+    <% when 8...10.7 %>
+      <p class="detail">Fresh breeze</p>
+    <% when 10.8...13.8 %>
+      <p class="detail">Strong breeze</p>
+    <% when 13.9...17.1 %>
+      <p class="detail">High wind</p>
+    <% when 17.2...20.7 %>
+      <p class="detail">Gale</p>
+    <% when 20.8...24.4 %>
+      <p class="detail">Strong Gale</p>
+    <% when 24.5...30 %>
+      <p class="detail">Storm</p>
+    <% end %>
+      
+  </div>
+
+</div>
+
+<a id="return_link" href="/">
+  <div id="return_button">Switch Location</div>
+</a>
