@@ -21,7 +21,7 @@ end
 
 
 
-get '/main' do
+get '/current' do
   if !session[:location].nil?
     @location = session[:location]
   else
@@ -58,10 +58,10 @@ get '/main' do
     session[:country] = @country
   
   else
-    redirect '/', flash[:error] = "Location not found."
+    redirect '/'
   end
 
-  erb :main
+  erb :current
 end
 
 

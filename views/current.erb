@@ -7,13 +7,13 @@
 <div id="data_container">
 
   <div id="side_bar">
-    <a href="/main"><div class="bars"><%= @time.strftime('%A') %></div></a>
-    <a href="/forecast/0"><div class="bars"><%= (@time + 86400).strftime('%A') %></div></a>
+    <a href="/current"><div class="bars">Current</div></a>
+    <a href="/forecast/0"><div class="bars">Tomorrow</div></a>
     <a href="/forecast/1"><div class="bars"><%= (@time + 172800).strftime('%A') %></div></a>
     <a href="/forecast/2"><div class="bars"><%= (@time + 259200).strftime('%A') %></div></a>
   </div>
 
-  <div id="left_side">
+  <div id="left_side" style="display:none;">
     <% if @description[0].split(" ").include?("rain") || @description[0].split(" ").include?("drizzle") %>
       <img src="/css/pics/desc/rain.png" />
     <% elsif @description[0].split(" ").include?("mist") %>
@@ -42,20 +42,20 @@
 
   </div>
 
-  <div id="right_side">
+  <div id="right_side" style="display:none;">
 
     <p class="main_detail"><img src="/css/pics/temp.png" /><%= @celsius %> &deg;C | <%= @fahr %> &deg;F</p>
     <% if @temp < 256 %>
       <p class="detail">Downright cold</p>
-    <% elsif @temp > 256 && @temp < 275  %>
+    <% elsif @temp >= 256 && @temp < 275  %>
       <p class="detail">Quite chilly</p>
-    <% elsif @temp > 275 && @temp < 285 %>
+    <% elsif @temp >= 275 && @temp < 285 %>
       <p class="detail">A bit brisk</p>
-    <% elsif @temp > 285 && @temp < 295 %>
+    <% elsif @temp >= 285 && @temp < 295 %>
       <p class="detail">Pleasant</p>
-    <% elsif @temp > 295 && @temp < 308 %>
+    <% elsif @temp >= 295 && @temp < 308 %>
       <p class="detail">Pretty warm</p>
-    <% elsif @temp > 308 %>
+    <% elsif @temp >= 308 %>
       <p class="detail">Very hot/p>
     <% end %>
 
