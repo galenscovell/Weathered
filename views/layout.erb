@@ -25,7 +25,12 @@
     </div>
 
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
-    <script src="<%= url("/js/script.js")%>"></script>
+    <script>
+      $(document).ready(function () {
+        $('#left_side').fadeIn(550);
+        $('#right_side').fadeIn(550);
+      });
+    </script>
 
   </body>
 
