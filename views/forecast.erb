@@ -13,7 +13,7 @@
     <a href="/forecast/2"><div class="bars"><%= (@time + 259200).strftime('%A') %></div></a>
   </div>
 
-  <div id="left_side"">
+  <div id="left_side">
     <% if @description[0].split(" ").include?("rain") || @description[0].split(" ").include?("drizzle") %>
       <img src="<%= url("/css/pics/desc/rain.png")%>" />
     <% elsif @description[0].split(" ").include?("mist") %>
@@ -42,7 +42,7 @@
 
   </div>
 
-  <div id="right_side" style="display:none;">
+  <div id="right_side">
 
     <p class="main_detail"><img src="<%= url("/css/pics/temp.png")%>" /><%= @celsius %> &deg;C | <%= @fahr %> &deg;F</p>
     <% if @temp < 256 %>
