@@ -15,23 +15,23 @@
 
   <div id="left_side" style="display:none;">
     <% if @description[0].split(" ").include?("rain") || @description[0].split(" ").include?("drizzle") %>
-      <img src="/css/pics/desc/rain.png" />
+      <img src="<%= url("/css/pics/desc/rain.png")%>" />
     <% elsif @description[0].split(" ").include?("mist") %>
-      <img src="/css/pics/desc/mist.png" />
+      <img src="<%= url("/css/pics/desc/mist.png")%>" />
     <% elsif @description[0].split(" ").include?("hail") %>
-      <img src="/css/pics/desc/hail.png" />
+      <img src="<%= url("/css/pics/desc/hail.png")%>" />
     <% elsif @description[0].split(" ").include?("snow") %>
-      <img src="/css/pics/desc/snow.png" />
+      <img src="<%= url("/css/pics/desc/snow.png")%>" />
     <% elsif @description[0].split(" ").include?("thunderstorm") %>
-      <img src="/css/pics/desc/thunder.png" />
+      <img src="<%= url("/css/pics/desc/thunder.png")%>" />
     <% elsif @description[0].split(" ").include?("clouds") %>
-      <img src="/css/pics/desc/cloud.png" />
+      <img src="<%= url("/css/pics/desc/cloud.png")%>" />
     <% elsif @description[0].split(" ").include?("fog") %>
-      <img src="/css/pics/desc/fog.png" />
+      <img src="<%= url("/css/pics/desc/fog.png")%>" />
     <% elsif @description[0].split(" ").include?("windy") %>
-      <img src="/css/pics/desc/wind.png" />
+      <img src="<%= url("/css/pics/desc/wind.png")%>" />
     <% else %>
-      <img src="/css/pics/desc/clear.png" />
+      <img src="<%= url("/css/pics/desc/clear.png")%>" />
     <% end %>
 
     <% @desc_list = "" %>
@@ -44,7 +44,7 @@
 
   <div id="right_side" style="display:none;">
 
-    <p class="main_detail"><img src="/css/pics/temp.png" /><%= @celsius %> &deg;C | <%= @fahr %> &deg;F</p>
+    <p class="main_detail"><img src="<%= url("/css/pics/temp.png")%>" /><%= @celsius %> &deg;C | <%= @fahr %> &deg;F</p>
     <% if @temp < 256 %>
       <p class="detail">Downright cold</p>
     <% elsif @temp >= 256 && @temp < 275  %>
@@ -60,7 +60,7 @@
     <% end %>
 
 
-    <p class="main_detail"><img src="/css/pics/humidity.gif" /><%= @humidity %> %</p>
+    <p class="main_detail"><img src="<%= url("/css/pics/humidity.gif")%>" /><%= @humidity %> %</p>
     <% if @temp < 300 || @humidity < 40 %>
       <p class="detail">Heat Index: No danger</p>
     <% elsif @temp > 300 && @humidity > 60 %>
@@ -71,11 +71,11 @@
       <p class="detail">Heat Index: Extreme Danger</p>
     <% end %>
 
-    <p class="main_detail"><img src="/css/pics/pressure.gif" /><%= @pressure %> hPa</p>
+    <p class="main_detail"><img src="<%= url("/css/pics/pressure.gif")%>" /><%= @pressure %> hPa</p>
     <p class="detail"><%= @pressure_percent %>% standard</p>
 
 
-    <p class="main_detail"><img src="/css/pics/wind.gif" /><%= @wind %> m/s &#8226; <%= @wind_direction %>&deg;</p>
+    <p class="main_detail"><img src="<%= url("/css/pics/wind.gif")%>" /><%= @wind %> m/s &#8226; <%= @wind_direction %>&deg;</p>
     <% case @wind
       when 0..0.3 %>
       <p class="detail">Calm</p>
