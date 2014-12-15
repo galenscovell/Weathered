@@ -9,4 +9,4 @@ Weather app utilizing Sinatra and the OpenWeather API.
 * Displays current weather as well as 3-day forecast
 * Geographic coordinates of area
 
-LIVE DEMO: [ Searching for hosting! ]
+LIVE DEMO: [ https://cryptic-refuge-6910.herokuapp.com/ ]
