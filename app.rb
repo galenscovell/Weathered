@@ -7,6 +7,7 @@ require 'open-uri'
 
 configure do
   enable :sessions
+  config.serve_static_assets = true
 end
 
 helpers do
