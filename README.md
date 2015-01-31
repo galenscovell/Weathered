@@ -10,3 +10,5 @@ Weather app utilizing Sinatra and the OpenWeather API.
 * Geographic coordinates of area
 
 LIVE DEMO: [ https://cryptic-refuge-6910.herokuapp.com/ ]
+
+<i>Please note that since the heroku hosting is on a free plan, if the site is not accessed within 15 minutes it will temporarily shut down. There will be a few seconds delay when loading the site for the first time, after which it will act normally.</i>
