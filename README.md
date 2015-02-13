@@ -1,3 +1,5 @@
+<img src='http://galenscovell.github.io/css/pics/weathered.png' width=500px />
+
 Weathered
 ==============
 
